@@ -1,0 +1,53 @@
+<!--takes an array and moves all of the zeros to the end-->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to extract parts of the string.</p>
+
+<button onclick='count("ddffgg")'>Try it</button>
+
+<p id="regex1"></p>
+<p id="split1"></p>
+
+<script>
+//SOLUTION 1
+var input = [109090, 2, 0, 5, 0, 0, 10, 8, 0, -2000, 0, 4, 0];
+var s = input.toString();
+var a1 = "";
+var a2 = [];
+for (var i = 0; i < s.length; i++) {
+  var value = s[i];
+  if (value != 0) {
+    a1 += value;
+  } else {
+    a2.push(value);
+  }
+}
+alert((a1.replace(/,,/g, ",").replace(/,,/g, ",") + a2).split(","));
+
+
+//SOLUTION 2
+var moveZeros1 = function (arr) {
+  for(var i = arr.length; i--;) {
+      if(arr[i] === 0) {
+          arr.splice(i, 1);
+          arr.push(0);
+      }
+  }
+  return arr;
+}
+
+//SOLUTION 3
+var moveZeros2 = function (arr) {
+  return arr.filter(function(x) {return x !== 0}).concat(arr.filter(function(x) {return x === 0;}));
+}
+
+var ggg = moveZeros2(input);
+document.getElementById("split1").innerHTML = JSON.stringify(ggg);
+
+</script>
+
+</body>
+</html>
